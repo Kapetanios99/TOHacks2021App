@@ -96,7 +96,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   static const _initialCameraPosition =
-      CameraPosition(target: LatLng(0, 0), zoom: 1);
+      CameraPosition(target: LatLng(43.6532, 79.3832), zoom: 3);
 
   @override
   Widget build(BuildContext context) {
