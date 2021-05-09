@@ -138,7 +138,7 @@ class _MapScreenState extends State<MapScreen> {
           backgroundColor: Colors.blue.shade300,
           actions: [
             Padding(
-              padding: EdgeInsets.only(right: 120.0, top: 10.0, bottom: 10.0),
+              padding: EdgeInsets.only(right: 95.0, top: 10.0, bottom: 10.0),
               child: Container(
                 alignment: Alignment.center,
                 child: new Text('High Risk',
