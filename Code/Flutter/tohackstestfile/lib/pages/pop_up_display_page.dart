@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DisplayPage extends StatelessWidget {
-  String _name;
-  String _climateIndex;
-  String _description;
-  DisplayPage(this._name, this._climateIndex, this._description);
+  // String _name;
+  // String _climateIndex;
+  // String _description;
+  // DisplayPage(this._name, this._climateIndex, this._description);
 
   @override
   Widget build(BuildContext context) {

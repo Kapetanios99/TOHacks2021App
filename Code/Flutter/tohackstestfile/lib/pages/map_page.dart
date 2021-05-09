@@ -10,27 +10,14 @@ class _MapScreenState extends State<MapScreen> {
   static const _initialCameraPosition =
       CameraPosition(target: LatLng(43.93, -79.4), zoom: 5);
 
-  Marker testMarker = Marker(
-  markerId: MarkerId("test"),
-  position: LatLng(35, -122),
-  infoWindow: InfoWindow(
-    title: "Title",
+  final markerTest = Marker(
+    markerId: MarkerId(1),
+    position: LatLng(35, -122),
+    infoWindow: InfoWindow(
+    title: 1,
     snippet: "this is a snippet",
-  ),
-);
-
-  setState( () {
-    _markers.clear();
-    final marker = Marker(
-      markerId: MarkerId(office.name),
-      position: LatLng(office.lat, office.lng),
-      infoWindow: InfoWindow(
-        title: office.name,
-        snippet: office.address,
-      ),
-    );}
+    ),
   );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +25,7 @@ class _MapScreenState extends State<MapScreen> {
       myLocationButtonEnabled: false,
       zoomControlsEnabled: false,
       initialCameraPosition: _initialCameraPosition,
-      markers: ,
-        ),
-      ),
+      markers: markerTest
     ));
   }
 }
