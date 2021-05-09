@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
         () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => DisplayPage()))); //CHANGE TO HOMEPAGE
+                builder: (context) => MapScreen()))); //CHANGE TO HOMEPAGE
   }
 
   @override

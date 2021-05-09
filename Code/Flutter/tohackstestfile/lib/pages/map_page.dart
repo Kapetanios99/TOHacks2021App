@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'pop_up_display_page.dart';
 
 class MapScreen extends StatefulWidget {
   @override
@@ -7,78 +8,107 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  static const _initialCameraPosition =
-      CameraPosition(target: LatLng(43.93, -79.4), zoom: 5);
+  List<Marker> allMarkers = [];
+  @override
+  void initState() {
+    super.initState();
 
-  final markerTest = Marker(
-    markerId: MarkerId("ID"),
-    position: LatLng(35, -122),
-    infoWindow: InfoWindow(
-      title: "Title",
-      snippet: "this is a snippet",
-    ),
-  );
+    /**
+     * At risk
+     */
+    // JAPAN
+    allMarkers.add(Marker(
+        markerId: MarkerId("JapanRisk"),
+        draggable: false,
+        onTap: () => Navigator.of(context).push(new MaterialPageRoute(
+            builder: (BuildContext context) =>
+                new DisplayPage('Japan', 'afafawf', 'images/japan.jpg'))),
+        position: LatLng(35.6762, 139.6503)));
+
+    // PHILLI
+    allMarkers.add(Marker(
+        markerId: MarkerId("PhilliRisk"),
+        draggable: false,
+        onTap: () => print("Philli has been tapped"),
+        position: LatLng(14.5995, 120.9842)));
+
+    // GERMANY
+    allMarkers.add(Marker(
+        markerId: MarkerId("GermanyRisk"),
+        draggable: false,
+        onTap: () => print("Germany has been tapped"),
+        position: LatLng(52.5200, 13.4050)));
+
+    // MADAGASCAR
+    allMarkers.add(Marker(
+        markerId: MarkerId("MadRisk"),
+        draggable: false,
+        onTap: () => print("Madagascar has been tapped"),
+        position: LatLng(-18.8792, 47.5079)));
+
+    // INDIA
+    allMarkers.add(Marker(
+        markerId: MarkerId("IndiaRisk"),
+        draggable: false,
+        onTap: () => print("India has been tapped"),
+        position: LatLng(28.6139, 77.2090)));
+
+    /**
+     * At fault
+     */
+
+    // CHINA
+    allMarkers.add(Marker(
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+        markerId: MarkerId("China"),
+        draggable: false,
+        onTap: () => print("China has been tapped"),
+        position: LatLng(39.9042, 116.4074)));
+
+    // USA
+    allMarkers.add(Marker(
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+        markerId: MarkerId("USA"),
+        draggable: false,
+        onTap: () => print("USA has been tapped"),
+        position: LatLng(38.9072, -77.0369)));
+
+    // INDIA
+    allMarkers.add(Marker(
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+        markerId: MarkerId("India"),
+        draggable: false,
+        onTap: () => print("India has been tapped"),
+        position: LatLng(22, 83)));
+
+    // RUSSIA
+    allMarkers.add(Marker(
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+        markerId: MarkerId("Russia"),
+        draggable: false,
+        onTap: () => print("Russia has been tapped"),
+        position: LatLng(55.751244, 37.618423)));
+
+    // JAPAN
+    allMarkers.add(Marker(
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+        markerId: MarkerId("Japan"),
+        draggable: false,
+        // onTap: () => print("Japan has been tapped"),
+        position: LatLng(35, 137)));
+  }
+
+  static const _initialCameraPosition =
+      CameraPosition(target: LatLng(43.6532, 79.3832), zoom: 3);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-        myLocationButtonEnabled: false,
-        zoomControlsEnabled: false,
-        initialCameraPosition: _initialCameraPosition,
-      ),
-    );
+        body: GoogleMap(
+      myLocationButtonEnabled: false,
+      zoomControlsEnabled: false,
+      initialCameraPosition: _initialCameraPosition,
+      markers: Set.from(allMarkers),
+    ));
   }
 }
-
-/**
- * if japan.isclicked{
- *  DisplayPage(String1 = "Japan", str2 = "CLimate in", str3 = "description")
- * }
- */
-
-final marker = Marker(
-  markerId: MarkerId("test"),
-  position: LatLng(35, -122),
-  infoWindow: InfoWindow(
-    title: "Title",
-    snippet: "this is a snippet",
-  ),
-);
-// _markers[office.name] = marker;
-
-// Map<MarkerId, Marker> markers = <MarkerId, Marker>{}; // CLASS MEMBER, MAP OF MARKS
-
-// void _add() {
-//     var markerIdVal = MyWayToGenerateId();
-//     final MarkerId markerId = MarkerId(markerIdVal);
-
-//     // creating a new MARKER
-//     final Marker marker = Marker(
-//       markerId: markerId,
-//       position: LatLng(
-//         center.latitude + sin(_markerIdCounter * pi / 6.0) / 20.0,
-//         center.longitude + cos(_markerIdCounter * pi / 6.0) / 20.0,
-//       ),
-//       infoWindow: InfoWindow(title: markerIdVal, snippet: '*'),
-//       onTap: () {
-//         _onMarkerTapped(markerId);
-//       },
-//     );
-
-//     setState(() {
-//       // adding a new marker to map
-//       markers[markerId] = marker;
-//     });
-// }
-
-// GoogleMap(
-//               onMapCreated: _onMapCreated,
-//               initialCameraPosition: const CameraPosition(
-//                 target: LatLng(-33.852, 151.211),
-//                 zoom: 11.0,
-//               ),
-//               // TODO(iskakaushik): Remove this when collection literals makes it to stable.
-//               // https://github.com/flutter/flutter/issues/28312
-//               // ignore: prefer_collection_literals
-//               markers: Set<Marker>.of(markers.values), // YOUR MARKS IN MAP
-// )
