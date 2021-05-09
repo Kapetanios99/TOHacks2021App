@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:tohackstestfile/pages/map_page.dart';
 import './pages/home_page.dart';
+import 'pages/pop_up_display_page.dart';
 
 void main() {
   runApp(MyApp());
