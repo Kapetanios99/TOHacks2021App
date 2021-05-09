@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'pop_up_display_page.dart';
@@ -127,16 +129,49 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   static const _initialCameraPosition =
-      CameraPosition(target: LatLng(43.6532, 79.3832), zoom: 3);
+      CameraPosition(target: LatLng(43.6532, -79.3832), zoom: 3);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue.shade300,
+          actions: [
+            Padding(
+              padding: EdgeInsets.only(right: 120.0, top: 10.0, bottom: 10.0),
+              child: Container(
+                alignment: Alignment.center,
+                child: new Text('High Risk',
+                    style: new TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold)),
+                width: 85,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  color: Colors.red,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 50.0, top: 10.0, bottom: 10.0),
+              child: Container(
+                alignment: Alignment.center,
+                child: new Text('Contributors',
+                    style: new TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold)),
+                width: 85,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  color: Colors.orange,
+                ),
+              ),
+            ),
+          ],
+        ),
         body: GoogleMap(
-      myLocationButtonEnabled: false,
-      zoomControlsEnabled: false,
-      initialCameraPosition: _initialCameraPosition,
-      markers: Set.from(allMarkers),
-    ));
+          myLocationButtonEnabled: false,
+          zoomControlsEnabled: false,
+          initialCameraPosition: _initialCameraPosition,
+          markers: Set.from(allMarkers),
+        ));
   }
 }
