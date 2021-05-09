@@ -1,47 +1,111 @@
-// import 'package:flutter/material.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-// class MapScreen extends StatefulWidget {
-//   @override
-//   _MapScreenState createState() => _MapScreenState();
-// }
+class MapScreen extends StatefulWidget {
+  @override
+  _MapScreenState createState() => _MapScreenState();
+}
 
-// class _MapScreenState extends State<MapScreen> {
-//   static const _initialCameraPosition =
-//       CameraPosition(target: LatLng(43.93, -79.4), zoom: 5);
+class _MapScreenState extends State<MapScreen> {
+  List<Marker> allMarkers = [];
+  @override
+  void initState() {
+    super.initState();
 
-//   final markerTest = Marker(
-//     markerId: MarkerId(1),
-//     position: LatLng(35, -122),
-//     infoWindow: InfoWindow(
-//     title: 1,
-//     snippet: "this is a snippet",
-//     ),
-//   );
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         body: GoogleMap(
-//       myLocationButtonEnabled: false,
-//       zoomControlsEnabled: false,
-//       initialCameraPosition: _initialCameraPosition,
-//       markers: markerTest
-//     ));
-//   }
-// }
+    /**
+     * At risk
+     */
+    // JAPAN
+    allMarkers.add(Marker(
+        markerId: MarkerId("Japan"),
+        draggable: false,
+        onTap: () => print("Japan has been tapped"),
+        position: LatLng(35.6762, 139.6503)));
 
-// /**
-//  * if japan.isclicked{
-//  *  DisplayPage(String1 = "Japan", str2 = "CLimate in", str3 = "description")
-//  * }
-//  */
+    // PHILLI
+    allMarkers.add(Marker(
+        markerId: MarkerId("Phillipines"),
+        draggable: false,
+        onTap: () => print("Philli has been tapped"),
+        position: LatLng(14.5995, 120.9842)));
 
-// final marker = Marker(
-//   markerId: MarkerId("test"),
-//   position: LatLng(35, -122),
-//   infoWindow: InfoWindow(
-//     title: "Title",
-//     snippet: "this is a snippet",
-//   ),
-// );
-// // _markers[office.name] = marker;
+    // GERMANY
+    allMarkers.add(Marker(
+        markerId: MarkerId("Germany"),
+        draggable: false,
+        onTap: () => print("Germany has been tapped"),
+        position: LatLng(52.5200, 13.4050)));
+
+    // MADAGASCAR
+    allMarkers.add(Marker(
+        markerId: MarkerId("Madagascar"),
+        draggable: false,
+        onTap: () => print("Madagascar has been tapped"),
+        position: LatLng(-18.8792, 47.5079)));
+
+    // INDIA
+    allMarkers.add(Marker(
+        markerId: MarkerId("India"),
+        draggable: false,
+        onTap: () => print("India has been tapped"),
+        position: LatLng(28.6139, 77.2090)));
+
+    /**
+     * At fault
+     */
+
+    // CHINA
+    allMarkers.add(Marker(
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+        markerId: MarkerId("China"),
+        draggable: false,
+        onTap: () => print("China has been tapped"),
+        position: LatLng(39.9042, 116.4074)));
+
+    // USA
+    allMarkers.add(Marker(
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+        markerId: MarkerId("USA"),
+        draggable: false,
+        onTap: () => print("USA has been tapped"),
+        position: LatLng(38.9072, -77.0369)));
+
+    // INDIA
+    allMarkers.add(Marker(
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+        markerId: MarkerId("India"),
+        draggable: false,
+        onTap: () => print("India has been tapped"),
+        position: LatLng(22, 83)));
+
+    // RUSSIA
+    allMarkers.add(Marker(
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+        markerId: MarkerId("Russia"),
+        draggable: false,
+        onTap: () => print("Russia has been tapped"),
+        position: LatLng(55.751244, 37.618423)));
+
+    // JAPAN
+    allMarkers.add(Marker(
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+        markerId: MarkerId("Japan"),
+        draggable: false,
+        onTap: () => print("Japan has been tapped"),
+        position: LatLng(35, 137)));
+  }
+
+  static const _initialCameraPosition =
+      CameraPosition(target: LatLng(0, 0), zoom: 1);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: GoogleMap(
+      myLocationButtonEnabled: false,
+      zoomControlsEnabled: false,
+      initialCameraPosition: _initialCameraPosition,
+      markers: Set.from(allMarkers),
+    ));
+  }
+}
